@@ -1,0 +1,500 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="assets/mermaid.css">
+        <link rel="stylesheet" href="assets/print.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">ADR</li><li class="chapter-item expanded "><a href="simplify-env-001.html"><strong aria-hidden="true">1.</strong> Simplify Environment</a></li><li class="chapter-item expanded "><a href="add-measurement-001.html"><strong aria-hidden="true">2.</strong> Add Measurement</a></li><li class="chapter-item expanded "><a href="add-testing-001.html"><strong aria-hidden="true">3.</strong> Add Testing</a></li><li class="chapter-item expanded "><a href="long-term-plan001.html"><strong aria-hidden="true">4.</strong> Long Term Plan</a></li><li class="chapter-item expanded affix "><li class="part-title">Code Review</li><li class="chapter-item expanded "><a href="CodeReview.html"><strong aria-hidden="true">5.</strong> Code Review</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<h2 id="review-project"><a class="header" href="#review-project">Review project</a></h2>
+<ul>
+<li><a href="https://github.com/ozkanonur/feednext">feednext</a></li>
+</ul>
+<h2 id="propose-top-1-3-initiatives"><a class="header" href="#propose-top-1-3-initiatives">Propose top 1-3 initiatives</a></h2>
+<ul>
+<li><a href="simplify-env-001.html">Simplify Environment</a></li>
+<li><a href="add-measurement-001.html">Add Measurement</a> </li>
+<li><a href="add-testing-001.html">Add Testing</a> </li>
+</ul>
+<p><img src="mdbook-plantuml-img/ef50896148fec40a81de1516e259f72d45f7311c.svg" alt="" /></p>
+<p><img src="mdbook-plantuml-img/578fe71c1e429abd72b321f487e5bd4d686cd415.svg" alt="" /></p>
+<h2 id="assignment"><a class="header" href="#assignment">Assignment</a></h2>
+<ul>
+<li><a href="https://gist.github.com/WhiteHsu/6f490356f9b07a7fab13d1b8591e4672">Link</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="simplify-environment"><a class="header" href="#simplify-environment">Simplify Environment</a></h1>
+<p>Date: 20220903</p>
+<h2 id="status"><a class="header" href="#status">Status</a></h2>
+<ul>
+<li>assept.</li>
+</ul>
+<h2 id="context-and-problem-statement"><a class="header" href="#context-and-problem-statement">Context and Problem Statement</a></h2>
+<p>Although current setup step not too complicate,
+but it is a hidden cost, when projects become bigger, the same code config needs duplication to two different places.</p>
+<p>The docker-compose not execute as a original simple way, we should make it back to one file when it not become too complicated,
+It's a one time job but could benefit all new developers to start this project with zero config and start it only needing to run <code>docker-compose up</code>.</p>
+<h2 id="considered-options"><a class="header" href="#considered-options">Considered Options</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+initialize mongodb with /docker-entrypoint-initdb.d
+<ul>
+<li>let it easy use docker-compose down to reset db.</li>
+<li>https://stackoverflow.com/questions/42912755/how-to-create-a-db-for-mongodb-container-on-start-up</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"/>
+sync docker-compose.yml and use .env.dev and .env.prod to separate environment</li>
+<li><input disabled="" type="checkbox"/>
+disable a service in docker-compose.yml for different environment
+<ul>
+<li>https://rotadev.com/is-there-any-way-to-disable-a-service-in-docker-compose-yml-dev/</li>
+</ul>
+</li>
+</ul>
+<h2 id="decision-outcome"><a class="header" href="#decision-outcome">Decision Outcome</a></h2>
+<h3 id="how-to-make-it-happen-and-intermediate-milestones"><a class="header" href="#how-to-make-it-happen-and-intermediate-milestones">How to make it happen and intermediate milestones</a></h3>
+<p>This task will estimate 8 day to finish, and already have a task to do.</p>
+<h3 id="positive-consequences"><a class="header" href="#positive-consequences">Positive Consequences</a></h3>
+<ul>
+<li>It helps the new user setup environment easily. </li>
+</ul>
+<h3 id="negative-consequences"><a class="header" href="#negative-consequences">Negative Consequences</a></h3>
+<ul>
+<li>Need extra effort to design different dimensions(such as dev or production) mechanism.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="add-measurement"><a class="header" href="#add-measurement">Add Measurement</a></h1>
+<p>Date: 20220904</p>
+<h2 id="status-1"><a class="header" href="#status-1">Status</a></h2>
+<ul>
+<li>assept.</li>
+</ul>
+<h2 id="context-and-problem-statement-1"><a class="header" href="#context-and-problem-statement-1">Context and Problem Statement</a></h2>
+<ul>
+<li>
+<p>If don't have data to prove result, The all of feature request only could keep in imaginary,
+so this adr will help build data collect mechanism,
+And after it, we could use it to estimate features, and reference it, we will go or no go. </p>
+</li>
+<li>
+<p>Exists Measurement:</p>
+<ul>
+<li>&quot;react-ga&quot; only in client app, and only for logging page-view.</li>
+</ul>
+</li>
+</ul>
+<h2 id="considered-options-1"><a class="header" href="#considered-options-1">Considered Options</a></h2>
+<ul>
+<li>
+<p>Google analytics</p>
+<ul>
+<li>use google analytics, we could reuse google infrastructure,
+and focus on how to collect data.
+when google gets the data, it will do de-identification, this will let us not eaily mapping with real users.</li>
+</ul>
+</li>
+<li>
+<p>Build our own data analytics platform.</p>
+<ul>
+<li>if build our own data platform, we need operate our machine,
+but we could have all the control with our data.</li>
+</ul>
+</li>
+<li>
+<p>Build own cdp solution.</p>
+<ul>
+<li><a href="matomo.org">matomo</a></li>
+<li><a href="https://github.com/milesmcc/shynet">shynet</a></li>
+</ul>
+</li>
+<li>
+<p>App error tracing</p>
+<ul>
+<li><a href="https://sentry.io/">sentry</a></li>
+<li><a href="https://newrelic.com/">newrelic</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="decision-outcome-1"><a class="header" href="#decision-outcome-1">Decision Outcome</a></h2>
+<h3 id="how-to-make-it-happen-and-intermediate-milestones-1"><a class="header" href="#how-to-make-it-happen-and-intermediate-milestones-1">How to make it happen and intermediate milestones</a></h3>
+<ol>
+<li>add Measurement to client side (user with browser)</li>
+<li>add Measurement to the application layer. (backend)
+<ul>
+<li>When adding it with the application layer, we could trace which backend is most used, and we could improve that backend.</li>
+</ul>
+</li>
+</ol>
+<h3 id="positive-consequences-1"><a class="header" href="#positive-consequences-1">Positive Consequences</a></h3>
+<ul>
+<li>It could help us use data to drive decisions. </li>
+</ul>
+<h3 id="negative-consequences-1"><a class="header" href="#negative-consequences-1">Negative Consequences</a></h3>
+<ul>
+<li>Need to extract traffic to logging data, and could use async ways to improve it. </li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="add-testing"><a class="header" href="#add-testing">Add Testing</a></h1>
+<p>Date: 20220904</p>
+<h2 id="status-2"><a class="header" href="#status-2">Status</a></h2>
+<ul>
+<li>assept.</li>
+</ul>
+<h2 id="context-and-problem-statement-2"><a class="header" href="#context-and-problem-statement-2">Context and Problem Statement</a></h2>
+<p>Some people will thinking coding with test (Unit Test), will let it become slow,
+But when you need process large changes or any basic feature changes,
+it could help you quickly verify if all existing features are still correct.
+And it also makes you more confident to do refactoring.</p>
+<h2 id="considered-options-2"><a class="header" href="#considered-options-2">Considered Options</a></h2>
+<h3 id="test-runner"><a class="header" href="#test-runner">Test Runner</a></h3>
+<ul>
+<li><a href="https://mochajs.org/">mocha</a></li>
+<li><a href="https://nodejs.org/api/test.html">node 18 build in test runner</a></li>
+</ul>
+<h3 id="react-unit-test-framework"><a class="header" href="#react-unit-test-framework">React unit test framework</a></h3>
+<ul>
+<li><a href="https://reactjs.org/docs/testing.html">React test</a> 
+<ul>
+<li><a href="https://jestjs.io/">Jest</a></li>
+<li><a href="https://testing-library.com/docs/react-testing-library/intro/">@testing-library/react</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="unit-test-code-coverage"><a class="header" href="#unit-test-code-coverage">unit test code coverage</a></h3>
+<ul>
+<li><a href="https://www.npmjs.com/package/nyc">nyc</a></li>
+</ul>
+<h3 id="end-to-end-test"><a class="header" href="#end-to-end-test">End to end test</a></h3>
+<ul>
+<li><a href="https://www.cypress.io/">Cypress</a> </li>
+<li><a href="https://developer.chrome.com/docs/puppeteer/">Puppeteer</a></li>
+</ul>
+<h2 id="decision-outcome-2"><a class="header" href="#decision-outcome-2">Decision Outcome</a></h2>
+<h3 id="how-to-make-it-happen-and-intermediate-milestones-2"><a class="header" href="#how-to-make-it-happen-and-intermediate-milestones-2">How to make it happen and intermediate milestones</a></h3>
+<ul>
+<li>In this step, we'll follow &quot;Add Measurement&quot;, and learn to know which page is important.</li>
+<li>We will promote high usage page's code coverage.</li>
+<li>Choose solution
+<ul>
+<li>Test Runner -&gt; mocha
+<ul>
+<li>mocha could use most of node version</li>
+</ul>
+</li>
+<li>React unit test framework -&gt; @testing-library/react
+<ul>
+<li>testing-library could integrate with more library.</li>
+</ul>
+</li>
+<li>End to end test -&gt; Cypress
+<ul>
+<li>It's easy to install.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="positive-consequences-2"><a class="header" href="#positive-consequences-2">Positive Consequences</a></h3>
+<ul>
+<li>We could more confident to make change,
+and could use the command line to do testing to avoid new changes breaking your existing code.</li>
+</ul>
+<h3 id="negative-consequences-2"><a class="header" href="#negative-consequences-2">Negative Consequences</a></h3>
+<ul>
+<li>Need extra time to develop testing code.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="long-term-plan"><a class="header" href="#long-term-plan">Long Term Plan</a></h1>
+<p>Date: 20220904</p>
+<h2 id="status-3"><a class="header" href="#status-3">Status</a></h2>
+<ul>
+<li>feature plan.</li>
+</ul>
+<h2 id="context-and-problem-statement-3"><a class="header" href="#context-and-problem-statement-3">Context and Problem Statement</a></h2>
+<ul>
+<li>After we have the testing, we could have more brave changes or any refactoring with modern framework.</li>
+<li>In this adr I'll plan it with a simple AI, to do auto tagging.</li>
+</ul>
+<h2 id="considered-options-3"><a class="header" href="#considered-options-3">Considered Options</a></h2>
+<ul>
+<li>use exists AI library
+<ul>
+<li>rubixml (PHP)</li>
+<li>TensorFlow </li>
+</ul>
+</li>
+</ul>
+<h2 id="decision-outcome-3"><a class="header" href="#decision-outcome-3">Decision Outcome</a></h2>
+<h3 id="how-to-make-it-happen-and-intermediate-milestones-3"><a class="header" href="#how-to-make-it-happen-and-intermediate-milestones-3">How to make it happen and intermediate milestones</a></h3>
+<ul>
+<li>Train model
+<ul>
+<li>use exists tags for classification.</li>
+<li>use Ngram to get each classification's feature.</li>
+<li>use this feature (which is extracted by Ngram), to go with KNN for train model.</li>
+</ul>
+</li>
+<li>Use model
+<ul>
+<li>raw data use Ngram to get feature</li>
+<li>use KNN model to know this raw data should go with which tag.</li>
+</ul>
+</li>
+</ul>
+<h3 id="positive-consequences-3"><a class="header" href="#positive-consequences-3">Positive Consequences</a></h3>
+<ul>
+<li>It's worth a try to add new features with new code structure. </li>
+</ul>
+<h3 id="negative-consequences-3"><a class="header" href="#negative-consequences-3">Negative Consequences</a></h3>
+<ul>
+<li>The AI classification may increase running time, could use async to resolve it. </li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="code-review"><a class="header" href="#code-review">Code Review</a></h1>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91">https://github.com/ozkanonur/feednext/pull/91</a></p>
+<h2 id="before-code-review"><a class="header" href="#before-code-review">Before code review</a></h2>
+<p>Before code review, I'll ask this developer to provide more context.</p>
+<ol>
+<li>Why make these changes?</li>
+<li>How to verify changes are run as expected?</li>
+<li>If have unit test policy, will also ask to follow unit test policy.</li>
+<li>I'll also ask to avoid large changes, the large changes will make it difficult to merge back to main branches.</li>
+</ol>
+<h2 id="clientnextconfigjs"><a class="header" href="#clientnextconfigjs">client/next.config.js</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-6a52ebdee5662eb75f6f3010d0aca4b33d708e85c7203d00cf50b1109480ae16R15"><img src="public/client-next-config-js.png"></a></p>
+<ul>
+<li>async function not contain an await keyword, should confirm that, add await or remove async </li>
+</ul>
+<h2 id="clientsrctypespagescreate-feedindexdts"><a class="header" href="#clientsrctypespagescreate-feedindexdts">client/src/@types/pages/create-feed/index.d.ts</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-3aee0b119ee16abf7c3c99ef4c5df45bd54b99202800947299efb72265062373R5"><img src="public/client-src-types-pages-create-feed-index-d-ts.png"></a></p>
+<ul>
+<li>The <code>tags:string</code> will be confusing. It better change to &quot;tagId&quot;: string or &quot;tags&quot;: string[]. </li>
+</ul>
+<h2 id="clientsrcpagesfeedindextsx"><a class="header" href="#clientsrcpagesfeedindextsx">client/src/pages/[feed]/index.tsx</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-b7af3f9a8a559d522f0006dd2dedc26210dd2b42f78d67b4c8e2129191844be8R78-R85"><img src="public/client-src-pages-[feed]-index-tsx.png"></a></p>
+<ul>
+<li>handleDeSelect not having return data should also add (): void =&gt; {...} </li>
+</ul>
+<h2 id="clientsrcpagesindextsx"><a class="header" href="#clientsrcpagesindextsx">client/src/pages/index.tsx</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-9691d47c27ed016e859106bb5803c62dce15c43051caa1670bd753ec97276575R43-R47"><img src="public/client-src-pages-index-tsx.png"></a></p>
+<ul>
+<li>Didn't see &quot;skipValueForPagination, tagFilter, sortBy, isLoading&quot; use in useEffect, need more comment why make them as useEffect dependency.</li>
+</ul>
+<p><a href="%22https://github.com/ozkanonur/feednext/pull/91/files#diff-9691d47c27ed016e859106bb5803c62dce15c43051caa1670bd753ec97276575R60-R72%22"><img src="public/client-src-pages-index-tsx-2.png"></a></p>
+<ul>
+<li>need take care tagFilter here, it's possible to get the wrong variable, could use &quot;useCallback&quot; to fix it. </li>
+</ul>
+<h2 id="clientsrcservicesapititleindexts"><a class="header" href="#clientsrcservicesapititleindexts">client/src/services/api/Title/index.ts</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-594b2887ab5032e6c5198e63f50531f207cfe7b0054646987769b39e9e0ca613R11-R15"><img src="public/client-src-services-api-Title-index-ts.png"></a></p>
+<ul>
+<li>using the spread operator here will make it a little weird. Because username, tags, sortBy are all string types, I need more comments here. </li>
+</ul>
+<h2 id="serverpackagejson"><a class="header" href="#serverpackagejson">server/package.json</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files?diff=unified&amp;w=0#diff-da00458cdaeaea2314cb0e0101c85130593048072ada62de01727958c5d6ca37L35-R35"><img src="public/server-package-json.png"></a></p>
+<ul>
+<li>We could take a note, it's to avoid 0.12.0 breaking changes.</li>
+<li>CHANGELOG
+<ul>
+<li>https://github.com/typestack/class-validator/blob/6a5762196b06655d51dddfff7807a5a87fc12216/CHANGELOG.md</li>
+</ul>
+</li>
+</ul>
+<h2 id="serversrcv1titleservicetitleservicets"><a class="header" href="#serversrcv1titleservicetitleservicets">server/src/v1/Title/Service/title.service.ts</a></h2>
+<p><a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-ae7847f28809ea43b2bb4fdc75bc32829ee8fa79bff9ac012a3f50a63ebb6e10R96"><img src="public/server-src-v1-title-service-title-service-ts.png"></a>
+<a href="https://github.com/ozkanonur/feednext/pull/91/files#diff-ae7847f28809ea43b2bb4fdc75bc32829ee8fa79bff9ac012a3f50a63ebb6e10R165-R166"><img src="public/server-src-v1-title-service-title-service-ts-2.png"></a></p>
+<ul>
+<li>should remove async, and improve with sql batch update solution to speed performance.</li>
+<li>typeorm bulk update via raw query
+<ul>
+<li>https://stackoverflow.com/questions/53790994/bulk-update-via-raw-query-in-typeorm</li>
+</ul>
+</li>
+</ul>
+<h2 id="avoid-use-if-single-line"><a class="header" href="#avoid-use-if-single-line">avoid use if single line.</a></h2>
+<p>The if single line statement easily makes errors, when you do copy and paste.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="assets/mermaid.min.js"></script>
+        <script type="text/javascript" src="assets/import-html.js"></script>
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </body>
+</html>
