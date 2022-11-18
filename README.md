@@ -1,2 +1,4 @@
 # feednext-adr
-ADR example
+* ADR viewer
+   * https://mrwilson.github.io/adr-viewer/index.html
+   * https://github.com/mrwilson/adr-viewer
